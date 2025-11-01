@@ -1,0 +1,15 @@
+# dependencies
+node_modules
+
+# env
+.env*
+
+# next
+.next
+out
+
+# misc
+dist
+*.log
+
+

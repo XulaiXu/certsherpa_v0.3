@@ -69,7 +69,7 @@ export default function Page() {
         <img src="/logo.svg" alt="CertSherpa logo" width={200} style={{ height: 'auto' }} />
       </div>
       <h1>{question.question_text}</h1>
-      <QuestionImages questionID={String(question.id)} />
+      <QuestionImages questionID={String(question.id)} imageUrl={question.imageUrl} imageAlt={question.imageAlt} />
       <div>
         {(['A','B','C','D'] as const).map(k => (
           <label key={k} className={`answer ${choice===k ? 'answer--selected' : ''}`}>

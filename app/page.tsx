@@ -39,34 +39,41 @@ export default function Page() {
   useEffect(() => { loadRandom(); }, []);
 
   if (error) return (
-    <main className="p-6 max-w-xl mx-auto">
-      <p className="text-red-600">{error}</p>
-      <button onClick={loadRandom} className="mt-4 border px-3 py-2">Retry</button>
+    <main style={{ padding: 24, maxWidth: 640, margin: '0 auto', fontFamily: 'Calibre, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"' }}>
+      <p style={{ color: '#b91c1c', fontSize: 14 }}>{error}</p>
+      <button onClick={loadRandom} style={{ marginTop: 12, border: '1px solid #e5e7eb', padding: '8px 12px', background: 'white', cursor: 'pointer' }}>Retry</button>
     </main>
   );
 
-  if (!question) return <main className="p-6">Loading…</main>;
+  if (!question) return (
+    <main style={{ padding: 24, fontFamily: 'Calibre, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"' }}>
+      Loading…
+    </main>
+  );
 
   return (
-    <main className="p-6 max-w-xl mx-auto space-y-4">
-      <h1 className="text-xl font-semibold">{question.question_text}</h1>
-      {(['A','B','C','D'] as const).map(k => (
-        <label key={k} className="flex items-center gap-2">
-          <input
-            type="radio"
-            name="opt"
-            value={k}
-            checked={choice===k}
-            onChange={() => setChoice(k)}
-            disabled={loading}
-          />
-          <span>{question[`option_${k.toLowerCase() as 'a'|'b'|'c'|'d'}`]}</span>
-        </label>
-      ))}
+    <main style={{ padding: 24, maxWidth: 640, margin: '0 auto', fontFamily: 'Calibre, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"' }}>
+      <h1 style={{ fontSize: 16, fontWeight: 600, marginBottom: 12 }}>{question.question_text}</h1>
+      <div>
+        {(['A','B','C','D'] as const).map(k => (
+          <label key={k} style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '8px 10px', marginBottom: 8, border: '1px solid #e5e7eb', borderRadius: 6, cursor: 'pointer' }}>
+            <input
+              type="radio"
+              name="opt"
+              value={k}
+              checked={choice===k}
+              onChange={() => setChoice(k)}
+              disabled={loading}
+              style={{ margin: 0 }}
+            />
+            <span style={{ fontSize: 14 }}>{question[`option_${k.toLowerCase() as 'a'|'b'|'c'|'d'}`]}</span>
+          </label>
+        ))}
+      </div>
       <button
         onClick={submitAndNext}
         disabled={!choice || loading}
-        className="border px-4 py-2 disabled:opacity-50"
+        style={{ display: 'block', marginTop: 12, border: '1px solid #e5e7eb', padding: '10px 16px', background: '#111827', color: 'white', borderRadius: 6, opacity: (!choice || loading) ? 0.6 : 1, cursor: (!choice || loading) ? 'not-allowed' : 'pointer' }}
       >{loading ? 'Saving…' : 'Next'}</button>
     </main>
   );

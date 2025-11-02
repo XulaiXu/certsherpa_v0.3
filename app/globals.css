@@ -1,0 +1,40 @@
+:root{
+  --primary:#51cbce;
+  --info:#51bcda;
+  --success:#6bd098;
+  --warning:#fbc658;
+  --danger:#ef8157;
+  --text:#2c2c2c;
+  --muted:#9A9A9A;
+  --border:#E3E3E3;
+  --bg:#f4f3ef;
+}
+
+html,body{ height:100%; }
+body{
+  margin:0;
+  color:var(--text);
+  background:var(--bg);
+  font-family: Calibre, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a{ color:var(--primary); }
+
+h1{ font-size:16px; font-weight:600; margin:0 0 12px 0; }
+
+.container{ padding:24px; max-width:640px; margin:0 auto; }
+
+.answer{ display:flex; align-items:center; gap:8px; padding:8px 10px; margin-bottom:8px; border:1px solid var(--border); border-radius:6px; cursor:pointer; background:#fff; }
+.answer--selected{ border-color:var(--primary); background: rgba(81,203,206,0.08); }
+.answer input{ margin:0; }
+.answer span{ font-size:14px; }
+
+.btn-primary{ display:block; margin-top:12px; border:1px solid var(--primary); padding:10px 16px; background:var(--primary); color:#fff; border-radius:6px; cursor:pointer; }
+.btn-primary:disabled{ opacity:.6; cursor:not-allowed; }
+.btn-primary:hover{ background:#34b5b8; border-color:#34b5b8; }
+
+.error{ color:#b91c1c; font-size:14px; }
+.btn{ border:1px solid var(--border); padding:8px 12px; background:#fff; cursor:pointer; }
+

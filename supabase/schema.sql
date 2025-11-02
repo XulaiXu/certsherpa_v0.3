@@ -9,6 +9,8 @@ create table if not exists public.questions (
   -- Optional fields for correctness and explanation
   correctAnswer text check (correctAnswer in ('A','B','C','D')),
   solution text,
+  imageUrl text,
+  imageAlt text,
   created_at timestamptz not null default now()
 );
 

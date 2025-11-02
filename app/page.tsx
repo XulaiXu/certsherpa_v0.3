@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react';
 import { supabase } from '@/lib/supabase/client';
 import Image from 'next/image';
+import QuestionImages from '@/components/QuestionImages';
 
 type Question = {
   id: number;
@@ -69,22 +70,7 @@ export default function Page() {
         <img src="/logo.svg" alt="CertSherpa logo" width={200} style={{ height: 'auto' }} />
       </div>
       <h1>{question.question_text}</h1>
-      {question.imageUrl && (
-        question.imageUrl.toLowerCase().endsWith('.svg') ? (
-          <img src={question.imageUrl} alt={question.imageAlt || 'Question image'} style={{ maxWidth: '100%', height: 'auto', margin: '8px 0 12px' }} />
-        ) : (
-          <div style={{ margin: '8px 0 12px' }}>
-            <Image
-              src={question.imageUrl}
-              alt={question.imageAlt || 'Question image'}
-              width={800}
-              height={600}
-              sizes="(max-width: 800px) 100vw, 800px"
-              style={{ width: '100%', height: 'auto' }}
-            />
-          </div>
-        )
-      )}
+      <QuestionImages imageUrl={question.imageUrl} imageAlt={question.imageAlt} />
       <div>
         {(['A','B','C','D'] as const).map(k => (
           <label key={k} className={`answer ${choice===k ? 'answer--selected' : ''}`}>

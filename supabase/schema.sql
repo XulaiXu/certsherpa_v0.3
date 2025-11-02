@@ -6,6 +6,9 @@ create table if not exists public.questions (
   option_b text not null,
   option_c text not null,
   option_d text not null,
+  -- Optional fields for correctness and explanation
+  correctAnswer text check (correctAnswer in ('A','B','C','D')),
+  solution text,
   created_at timestamptz not null default now()
 );
 

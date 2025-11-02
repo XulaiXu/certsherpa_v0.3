@@ -6,6 +6,8 @@ type Question = {
   id: number;
   question_text: string;
   option_a: string; option_b: string; option_c: string; option_d: string;
+  correctAnswer?: 'A'|'B'|'C'|'D';
+  solution?: string;
 };
 
 export default function Page() {
@@ -13,6 +15,7 @@ export default function Page() {
   const [choice, setChoice] = useState<'A'|'B'|'C'|'D'|null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [lastResult, setLastResult] = useState<{ correct: boolean; text: string } | null>(null);
 
   async function loadRandom() {
     setLoading(true); setError(null); setChoice(null);
@@ -29,10 +32,14 @@ export default function Page() {
   async function submitAndNext() {
     if (!question || !choice) return;
     setLoading(true); setError(null);
+    // Determine correctness before we load the next question
+    const isCorrect = question.correctAnswer ? (choice === question.correctAnswer) : false;
+    const message = `${isCorrect ? 'Correct' : 'Incorrect'}${question.solution ? ` — ${question.solution}` : ''}`;
     const { error } = await supabase
       .from('responses')
       .insert({ question_id: question.id, selected_option: choice });
     if (error) { setError(error.message); setLoading(false); return; }
+    setLastResult({ correct: isCorrect, text: message });
     await loadRandom();
   }
 
@@ -75,6 +82,11 @@ export default function Page() {
         disabled={!choice || loading}
         className="btn-primary"
       >{loading ? 'Saving…' : 'Next'}</button>
+      {lastResult && (
+        <div className="result" style={{ color: lastResult.correct ? 'var(--success)' : 'var(--danger)' }}>
+          {lastResult.text}
+        </div>
+      )}
     </main>
   );
 }

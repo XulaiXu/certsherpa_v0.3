@@ -38,3 +38,5 @@ h1{ font-size:16px; font-weight:600; margin:0 0 12px 0; }
 .error{ color:#b91c1c; font-size:14px; }
 .btn{ border:1px solid var(--border); padding:8px 12px; background:#fff; cursor:pointer; }
 
+.result{ margin-top:16px; font-size:14px; }
+

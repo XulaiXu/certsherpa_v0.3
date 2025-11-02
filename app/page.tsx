@@ -16,7 +16,7 @@ export default function Page() {
 
   async function loadRandom() {
     setLoading(true); setError(null); setChoice(null);
-    const { data, error } = await supabase.rpc('get_random_question');
+    const { data, error } = await supabase.rpc('get_random_question_ui');
     if (error || !data || data.length === 0) {
       setError(error?.message || 'No question available');
     } else {

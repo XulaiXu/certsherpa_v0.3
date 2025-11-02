@@ -1,8 +1,7 @@
 'use client';
 import { useEffect, useState } from 'react';
 import { supabase } from '@/lib/supabase/client';
-import Image from 'next/image';
-import QuestionImages from '@/components/QuestionImages';
+import { QuestionImages } from '@/components/QuestionImages';
 
 type Question = {
   id: number;
@@ -70,7 +69,7 @@ export default function Page() {
         <img src="/logo.svg" alt="CertSherpa logo" width={200} style={{ height: 'auto' }} />
       </div>
       <h1>{question.question_text}</h1>
-      <QuestionImages imageUrl={question.imageUrl} imageAlt={question.imageAlt} />
+      <QuestionImages questionID={String(question.id)} />
       <div>
         {(['A','B','C','D'] as const).map(k => (
           <label key={k} className={`answer ${choice===k ? 'answer--selected' : ''}`}>

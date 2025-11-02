@@ -52,7 +52,7 @@ export default function Page() {
   return (
     <main className="container">
       <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 12 }}>
-        <img src="/logo.svg" alt="CertSherpa logo" width={48} height={48} />
+        <img src="/logo.svg" alt="CertSherpa logo" width={200} style={{ height: 'auto' }} />
       </div>
       <h1>{question.question_text}</h1>
       <div>

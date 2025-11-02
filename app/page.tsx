@@ -7,6 +7,7 @@ type Question = {
   question_text: string;
   option_a: string; option_b: string; option_c: string; option_d: string;
   correctAnswer?: 'A'|'B'|'C'|'D';
+  correctanswer?: 'A'|'B'|'C'|'D';
   solution?: string;
 };
 
@@ -33,7 +34,9 @@ export default function Page() {
     if (!question || !choice) return;
     setLoading(true); setError(null);
     // Determine correctness using correctAnswer, or fall back to solution if needed
-    const key = (question.correctAnswer ?? question.solution)?.trim()?.toUpperCase() as ('A'|'B'|'C'|'D') | undefined;
+    // Prefer correctAnswer; support lowercase 'correctanswer' (Postgres folds unquoted identifiers)
+    const keyFromDb = (question.correctAnswer ?? question.correctanswer);
+    const key = (keyFromDb ?? question.solution)?.trim()?.toUpperCase() as ('A'|'B'|'C'|'D') | undefined;
     const isCorrect = key ? (choice === key) : false;
     const message = `${isCorrect ? 'Correct' : 'Incorrect'}${question.solution ? ` — ${question.solution}` : ''}`;
     const { error } = await supabase

@@ -1,16 +1,14 @@
-import type { NextConfig } from 'next';
-
-const nextConfig: NextConfig = {
-  reactStrictMode: true,
+// next.config.ts
+const nextConfig = {
   images: {
-    // Explicit domain for raster images served via next/image
-    domains: ['nbocdtiijnttzwfgdwbi.supabase.co'],
     remotePatterns: [
-      { protocol: 'https', hostname: '**.supabase.co' },
+      {
+        protocol: 'https',
+        hostname: 'nbocdtiijnttzwfgdwbi.supabase.co',
+        pathname: '/storage/v1/object/public/**',
+      },
     ],
   },
 };
 
 export default nextConfig;
-
-

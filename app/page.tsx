@@ -94,7 +94,7 @@ export default function Page() {
       {/* Render all matching images: ID.ext and ID_1.._10.ext (png/jpg/jpeg/webp/svg) */}
       <QuestionImages
         questionID={codeForImages}
-        imageUrl={question.imageUrl ?? null}
+        imageUrl={question.imageUrl ?? `${codeForImages}.png`}
         imageAlt={question.imageAlt ?? null}
         // useSignedUrls   // uncomment if your bucket is private
       />

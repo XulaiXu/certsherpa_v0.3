@@ -12,6 +12,7 @@ type Question = {
   solution?: string;
   imageUrl?: string | null;
   imageAlt?: string | null;
+  QuestionID?: string;  
   questionID?: string;   // quoted column keeps case
   questionid?: string;   // unquoted column lowercased by Postgres
 };
@@ -81,7 +82,7 @@ export default function Page() {
 
   if (!question) return <main className="container">Loading…</main>;
 
-  const codeForImages = question.questionID || question.questionid || String(question.id);
+  const codeForImages = (question as any).QuestionID || question.questionID || question.questionid || String(question.id);
 
   return (
     <main className="container">

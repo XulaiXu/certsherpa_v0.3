@@ -56,8 +56,8 @@ export default function QuestionImages({
       if (/^\d+$/.test(qid)) { setItems([]); return; }
 
       const suffixes = ['', '_1','_2','_3','_4','_5','_6','_7','_8','_9','_10'];
-      // Per app requirement: all assets are .png
-      const exts = ['png'];
+      // Probe common raster + vector formats
+      const exts = ['png', 'svg'];
       const candidates: string[] = [];
       for (const s of suffixes) {
         for (const e of exts) {

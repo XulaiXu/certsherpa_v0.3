@@ -1,22 +1,42 @@
 'use client';
-import { useState, useEffect } from 'react';
+
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
+import { supabase } from '@/lib/supabase/client';
 
 type Props = {
   questionID?: string;
-  imageUrl?: string | null;
+  imageUrl?: string | null;        // if present, we render this and skip lookup
   imageAlt?: string | null;
+  bucket?: string;                 // defaults to 'questions'
+  useSignedUrls?: boolean;         // true if bucket is private
 };
 
-const SUPABASE_PREFIX =
-  'https://nbocdtiijnttzwfgdwbi.supabase.co/storage/v1/object/public/questions/';
+type FileItem = { name: string; url: string };
 
-export function QuestionImages({ questionID, imageUrl, imageAlt }: Props) {
-  // If an explicit URL is provided (from DB), render it directly (use <img> so it works without Next image domain rules)
+function escapeRegExp(s: string) {
+  return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+export default function QuestionImages({
+  questionID,
+  imageUrl,
+  imageAlt,
+  bucket = 'questions',
+  useSignedUrls = false,
+}: Props) {
+
   if (imageUrl) {
+    const absolute = /^https?:\/\//i.test(imageUrl);
+    let src = imageUrl;
+    if (!absolute) {
+      const clean = imageUrl.replace(/^\/+/, '');
+      const { data: pub } = supabase.storage.from(bucket).getPublicUrl(clean);
+      if (pub?.publicUrl) src = pub.publicUrl;
+    }
     return (
       <img
-        src={imageUrl}
+        src={src}
         alt={imageAlt || 'Question image'}
         style={{ maxWidth: '100%', height: 'auto', margin: '8px 0 12px' }}
         loading="lazy"
@@ -24,49 +44,92 @@ export function QuestionImages({ questionID, imageUrl, imageAlt }: Props) {
     );
   }
 
-  // Otherwise, try to auto-discover by ID in the public bucket
-  const [urls, setUrls] = useState<string[]>([]);
+  const [items, setItems] = useState<FileItem[] | null>(null);
 
   useEffect(() => {
-    if (!questionID) return;
     let cancelled = false;
-    const exts = ['png', 'jpg', 'jpeg', 'svg', 'PNG', 'JPG', 'JPEG', 'SVG'];
-    const suffixes = ['', '_1', '_2', '_3', '_4', '_5', '_6', '_7', '_8', '_9', '_10'];
-    const candidates: string[] = [];
-    const code = questionID.trim();
-    for (const s of suffixes) {
-      for (const e of exts) {
-        candidates.push(`${SUPABASE_PREFIX}${code}${s}.${e}`);
+
+    async function load() {
+      if (!questionID) return;
+
+      // Try list with search (v2 supports it). If ‘search’ isn’t supported in your backend,
+      // the call still returns all files and we’ll filter strictly with the regex below.
+      const { data, error } = await supabase.storage.from(bucket).list('', {
+        search: questionID,
+        limit: 1000,
+        sortBy: { column: 'name', order: 'asc' },
+      });
+
+      if (error) {
+        console.error('Supabase storage list error:', error);
+        if (!cancelled) setItems([]);
+        return;
       }
+
+      const exts = '(png|jpg|jpeg|webp|svg)';
+      const id = escapeRegExp(questionID);
+      // Matches QUESTIONID.ext or QUESTIONID_1..10.ext
+      const re = new RegExp(`^${id}(?:_(?:[1-9]|10))?\\.${exts}$`, 'i');
+
+      const matches = (data ?? []).filter((f) => f?.name && re.test(f.name));
+
+      // Sort: base (no suffix) first, then _1.._10
+      const sorted = matches.sort((a, b) => {
+        const n = (name: string) => {
+          const m = name.match(/_(\d+)\.[^.]+$/);
+          return m ? parseInt(m[1], 10) : 0;
+        };
+        return n(a.name) - n(b.name);
+      });
+
+      const out: FileItem[] = [];
+      for (const f of sorted) {
+        if (useSignedUrls) {
+          const { data: signed } = await supabase.storage.from(bucket).createSignedUrl(f.name, 3600);
+          if (signed?.signedUrl) out.push({ name: f.name, url: signed.signedUrl });
+        } else {
+          const { data: pub } = supabase.storage.from(bucket).getPublicUrl(f.name);
+          if (pub?.publicUrl) out.push({ name: f.name, url: pub.publicUrl });
+        }
+      }
+
+      if (!cancelled) setItems(out);
     }
 
-    candidates.forEach((url) => {
-      const tester = new window.Image();
-      tester.onload = () => {
-        if (!cancelled) setUrls((prev) => (prev.includes(url) ? prev : [...prev, url]));
-      };
-      tester.onerror = () => {};
-      tester.src = url;
-    });
-
+    load();
     return () => {
       cancelled = true;
     };
-  }, [questionID]);
+  }, [questionID, bucket, useSignedUrls]);
 
-  if (!questionID || urls.length === 0) return null;
+  if (!questionID || items === null || items.length === 0) return null;
 
   return (
     <div style={{ margin: '8px 0 12px' }}>
-      {urls.map((url, i) => (
-        <img
-          key={i}
-          src={url}
-          alt={`${questionID} diagram ${i + 1}`}
-          style={{ maxWidth: '100%', height: 'auto', marginBottom: 8 }}
-          loading="lazy"
-        />
-      ))}
+      {items.map(({ name, url }, i) => {
+        const lower = name.toLowerCase();
+        const isSvg = lower.endsWith('.svg');
+        return isSvg ? (
+          <img
+            key={name}
+            src={url}
+            alt={`${questionID} diagram ${i + 1}`}
+            style={{ maxWidth: '100%', height: 'auto', marginBottom: 8 }}
+            loading="lazy"
+          />
+        ) : (
+          <Image
+            key={name}
+            src={url}
+            alt={`${questionID} diagram ${i + 1}`}
+            width={1600}
+            height={1200}
+            sizes="(max-width: 768px) 100vw, 800px"
+            style={{ width: '100%', height: 'auto', marginBottom: 8 }}
+            loading="lazy"
+          />
+        );
+      })}
     </div>
   );
 }

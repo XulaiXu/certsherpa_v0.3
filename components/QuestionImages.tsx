@@ -51,13 +51,17 @@ export default function QuestionImages({
 
     async function load() {
       if (!questionID) return;
+      const qid = questionID.trim();
+      // If the code is purely numeric (fallback id), skip probing to avoid root 404 spam
+      if (/^\d+$/.test(qid)) { setItems([]); return; }
 
       const suffixes = ['', '_1','_2','_3','_4','_5','_6','_7','_8','_9','_10'];
-      const exts = ['png','jpg','jpeg','webp','svg'];
+      // Per app requirement: all assets are .png
+      const exts = ['png'];
       const candidates: string[] = [];
       for (const s of suffixes) {
         for (const e of exts) {
-          candidates.push(`${questionID}${s}.${e}`);
+          candidates.push(`${qid}${s}.${e}`);
         }
       }
 

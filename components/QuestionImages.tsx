@@ -52,46 +52,37 @@ export default function QuestionImages({
     async function load() {
       if (!questionID) return;
 
-      // Try list with search (v2 supports it). If ‘search’ isn’t supported in your backend,
-      // the call still returns all files and we’ll filter strictly with the regex below.
-      const { data, error } = await supabase.storage.from(bucket).list('', {
-        search: questionID,
-        limit: 1000,
-        sortBy: { column: 'name', order: 'asc' },
-      });
-
-      if (error) {
-        console.error('Supabase storage list error:', error);
-        if (!cancelled) setItems([]);
-        return;
+      const suffixes = ['', '_1','_2','_3','_4','_5','_6','_7','_8','_9','_10'];
+      const exts = ['png','jpg','jpeg','webp','svg'];
+      const candidates: string[] = [];
+      for (const s of suffixes) {
+        for (const e of exts) {
+          candidates.push(`${questionID}${s}.${e}`);
+        }
       }
 
-      const exts = '(png|jpg|jpeg|webp|svg)';
-      const id = escapeRegExp(questionID);
-      // Matches QUESTIONID.ext or QUESTIONID_1..10.ext
-      const re = new RegExp(`^${id}(?:_(?:[1-9]|10))?\\.${exts}$`, 'i');
+      const out: FileItem[] = [];
+      await Promise.all(candidates.map(async (name) => {
+        const url = useSignedUrls
+          ? (await supabase.storage.from(bucket).createSignedUrl(name, 3600)).data?.signedUrl
+          : supabase.storage.from(bucket).getPublicUrl(name).data?.publicUrl;
+        if (!url) return;
+        await new Promise<void>((resolve) => {
+          const img = new window.Image();
+          img.onload = () => { out.push({ name, url }); resolve(); };
+          img.onerror = () => resolve();
+          img.src = url;
+        });
+      }));
 
-      const matches = (data ?? []).filter((f) => f?.name && re.test(f.name));
-
-      // Sort: base (no suffix) first, then _1.._10
-      const sorted = matches.sort((a, b) => {
+      // Sort: base first, then numbered
+      out.sort((a,b) => {
         const n = (name: string) => {
           const m = name.match(/_(\d+)\.[^.]+$/);
           return m ? parseInt(m[1], 10) : 0;
         };
         return n(a.name) - n(b.name);
       });
-
-      const out: FileItem[] = [];
-      for (const f of sorted) {
-        if (useSignedUrls) {
-          const { data: signed } = await supabase.storage.from(bucket).createSignedUrl(f.name, 3600);
-          if (signed?.signedUrl) out.push({ name: f.name, url: signed.signedUrl });
-        } else {
-          const { data: pub } = supabase.storage.from(bucket).getPublicUrl(f.name);
-          if (pub?.publicUrl) out.push({ name: f.name, url: pub.publicUrl });
-        }
-      }
 
       if (!cancelled) setItems(out);
     }

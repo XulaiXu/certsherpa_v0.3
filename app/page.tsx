@@ -72,14 +72,21 @@ export default function Page() {
         <img src="/logo.svg" alt="CertSherpa logo" width={200} style={{ height: 'auto' }} />
       </div>
       <h1>{question.question_text}</h1>
-      {/* Temporary: force-show a known image under every question for verification */}
-      <div style={{ margin: '8px 0 12px' }}>
-        <img
-          src="https://nbocdtiijnttzwfgdwbi.supabase.co/storage/v1/object/public/questions/PECB14AA0025.png"
-          alt="verification image"
-          style={{ maxWidth: '100%', height: 'auto' }}
-        />
-      </div>
+      {/* Dynamic: render the image that matches the textual questionID */}
+      {(() => {
+        const codeForImages = (question.questionID || question.questionid || String(question.id));
+        const base = 'https://nbocdtiijnttzwfgdwbi.supabase.co/storage/v1/object/public/questions/';
+        return (
+          <div style={{ margin: '8px 0 12px' }}>
+            <img
+              src={`${base}${codeForImages}.png`}
+              alt={`${codeForImages} diagram`}
+              style={{ maxWidth: '100%', height: 'auto' }}
+              loading="lazy"
+            />
+          </div>
+        );
+      })()}
       {(() => {
         const codeForImages = (question.questionID || question.questionid || String(question.id));
         return (

@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useState } from 'react';
 import { supabase } from '@/lib/supabase/client';
-import { QuestionImages } from '@/components/QuestionImages';
+import QuestionImages from '@/components/QuestionImages';
 
 type Question = {
   id: number;
@@ -72,6 +72,14 @@ export default function Page() {
         <img src="/logo.svg" alt="CertSherpa logo" width={200} style={{ height: 'auto' }} />
       </div>
       <h1>{question.question_text}</h1>
+      {/* Temporary: force-show a known image under every question for verification */}
+      <div style={{ margin: '8px 0 12px' }}>
+        <img
+          src="https://nbocdtiijnttzwfgdwbi.supabase.co/storage/v1/object/public/questions/PECB14AA0025.png"
+          alt="verification image"
+          style={{ maxWidth: '100%', height: 'auto' }}
+        />
+      </div>
       {(() => {
         const codeForImages = (question.questionID || question.questionid || String(question.id));
         return (

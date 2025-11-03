@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useState } from 'react';
 import { supabase } from '@/lib/supabase/client';
-import QuestionImages from '@/components/QuestionImages';  // <-- default import
+import { QuestionImages } from '@/components/QuestionImages';
 
 type Question = {
   id: number;

@@ -30,12 +30,13 @@ export function QuestionImages({ questionID, imageUrl, imageAlt }: Props) {
   useEffect(() => {
     if (!questionID) return;
     let cancelled = false;
-    const exts = ['png', 'jpg', 'jpeg', 'svg'];
+    const exts = ['png', 'jpg', 'jpeg', 'svg', 'PNG', 'JPG', 'JPEG', 'SVG'];
     const suffixes = ['', '_1', '_2', '_3', '_4', '_5', '_6', '_7', '_8', '_9', '_10'];
     const candidates: string[] = [];
+    const code = questionID.trim();
     for (const s of suffixes) {
       for (const e of exts) {
-        candidates.push(`${SUPABASE_PREFIX}${questionID}${s}.${e}`);
+        candidates.push(`${SUPABASE_PREFIX}${code}${s}.${e}`);
       }
     }
 

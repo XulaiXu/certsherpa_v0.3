@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useState } from 'react';
 import { supabase } from '@/lib/supabase/client';
-import { QuestionImages } from '@/components/QuestionImages';
+import QuestionImages from '@/components/QuestionImages';  // <-- default import
 
 type Question = {
   id: number;
@@ -12,7 +12,6 @@ type Question = {
   solution?: string;
   imageUrl?: string | null;
   imageAlt?: string | null;
-  QuestionID?: string;  
   questionID?: string;   // quoted column keeps case
   questionid?: string;   // unquoted column lowercased by Postgres
 };
@@ -82,7 +81,7 @@ export default function Page() {
 
   if (!question) return <main className="container">Loading…</main>;
 
-  const codeForImages = (question as any).QuestionID || question.questionID || question.questionid || String(question.id);
+  const codeForImages = question.questionID || question.questionid || String(question.id);
 
   return (
     <main className="container">

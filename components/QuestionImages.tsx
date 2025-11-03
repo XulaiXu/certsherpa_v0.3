@@ -38,7 +38,7 @@ export default function QuestionImages({
       <img
         src={src}
         alt={imageAlt || 'Question image'}
-        style={{ maxWidth: '100%', height: 'auto', margin: '8px 0 12px' }}
+        style={{ width: '80%', height: 'auto', margin: '8px auto 12px', display: 'block' }}
         loading="lazy"
       />
     );
@@ -52,12 +52,10 @@ export default function QuestionImages({
     async function load() {
       if (!questionID) return;
       const qid = questionID.trim();
-      // If the code is purely numeric (fallback id), skip probing to avoid root 404 spam
-      if (/^\d+$/.test(qid)) { setItems([]); return; }
 
       const suffixes = ['', '_1','_2','_3','_4','_5','_6','_7','_8','_9','_10'];
-      // Probe common raster + vector formats
-      const exts = ['png', 'svg'];
+      // Try common image types for robustness
+      const exts = ['png', 'jpg', 'jpeg', 'webp', 'svg'];
       const candidates: string[] = [];
       for (const s of suffixes) {
         for (const e of exts) {
@@ -109,7 +107,7 @@ export default function QuestionImages({
             key={name}
             src={url}
             alt={`${questionID} diagram ${i + 1}`}
-            style={{ maxWidth: '100%', height: 'auto', marginBottom: 8 }}
+            style={{ width: '80%', height: 'auto', margin: '0 auto 8px', display: 'block' }}
             loading="lazy"
           />
         ) : (
@@ -120,7 +118,7 @@ export default function QuestionImages({
             width={1600}
             height={1200}
             sizes="(max-width: 768px) 100vw, 800px"
-            style={{ width: '100%', height: 'auto', marginBottom: 8 }}
+            style={{ width: '80%', height: 'auto', margin: '0 auto 8px', display: 'block' }}
             loading="lazy"
           />
         );
@@ -128,4 +126,3 @@ export default function QuestionImages({
     </div>
   );
 }
-export { QuestionImages };

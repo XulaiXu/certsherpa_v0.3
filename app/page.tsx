@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useState } from 'react';
 import { supabase } from '@/lib/supabase/client';
-import { QuestionImages } from '@/components/QuestionImages';
+import QuestionImages from '@/components/QuestionImages';  // <-- default import
 
 type Question = {
   id: number;
@@ -10,11 +10,10 @@ type Question = {
   correctAnswer?: 'A'|'B'|'C'|'D';
   correctanswer?: 'A'|'B'|'C'|'D';
   solution?: string;
-  imageUrl?: string;
-  imageAlt?: string;
-  // Some datasets provide a textual question identifier (e.g., "PECB14AA0022")
-  questionID?: string; // quoted column will preserve case
-  questionid?: string; // unquoted column gets folded to lowercase in Postgres
+  imageUrl?: string | null;
+  imageAlt?: string | null;
+  questionID?: string;   // quoted column keeps case
+  questionid?: string;   // unquoted column lowercased by Postgres
 };
 
 export default function Page() {
@@ -23,80 +22,83 @@ export default function Page() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [lastResult, setLastResult] = useState<{ correct: boolean; text: string } | null>(null);
+  const [answered, setAnswered] = useState(false);
 
   async function loadRandom() {
-    setLoading(true); setError(null); setChoice(null);
+    setLoading(true); setError(null);
+    setChoice(null);
+    setLastResult(null);
+    setAnswered(false);
     const { data, error } = await supabase.rpc('get_random_question');
     if (error || !data || data.length === 0) {
       setError(error?.message || 'No question available');
     } else {
-      const q = data[0] as Question;
-      setQuestion(q);
+      setQuestion(data[0] as Question);
     }
     setLoading(false);
   }
 
   async function submitAndNext() {
-    if (!question || !choice) return;
-    setLoading(true); setError(null);
-    // Determine correctness using correctAnswer, or fall back to solution if needed
-    // Prefer correctAnswer; support lowercase 'correctanswer' (Postgres folds unquoted identifiers)
-    const keyFromDb = (question.correctAnswer ?? question.correctanswer);
-    const key = (keyFromDb ?? question.solution)?.trim()?.toUpperCase() as ('A'|'B'|'C'|'D') | undefined;
-    const isCorrect = key ? (choice === key) : false;
-    const message = `${isCorrect ? 'Correct' : 'Incorrect'}${question.solution ? ` — ${question.solution}` : ''}`;
-    const { error } = await supabase
-      .from('responses')
-      .insert({ question_id: question.id, selected_option: choice });
-    if (error) { setError(error.message); setLoading(false); return; }
-    setLastResult({ correct: isCorrect, text: message });
+    if (!question) return;
+
+    // First click: grade and show result without advancing
+    if (!answered) {
+      if (!choice) return;
+      setLoading(true); setError(null);
+
+      const keyFromDb = (question.correctAnswer ?? question.correctanswer);
+      const key = (keyFromDb ?? question.solution)?.trim()?.toUpperCase() as ('A'|'B'|'C'|'D') | undefined;
+      const isCorrect = key ? (choice === key) : false;
+      const message = `${isCorrect ? 'Correct' : 'Incorrect'}${question.solution ? ` — ${question.solution}` : ''}`;
+
+      const { error } = await supabase
+        .from('responses')
+        .insert({ question_id: question.id, selected_option: choice });
+      if (error) { setError(error.message); setLoading(false); return; }
+
+      setLastResult({ correct: isCorrect, text: message });
+      setAnswered(true);
+      setLoading(false);
+      return;
+    }
+
+    // Second click: advance to next question
+    setLoading(true);
     await loadRandom();
+    setLoading(false);
   }
 
   useEffect(() => { loadRandom(); }, []);
 
-  if (error) return (
-    <main className="container">
-      <p className="error">{error}</p>
-      <button onClick={loadRandom} className="btn">Retry</button>
-    </main>
-  );
+  if (error) {
+    return (
+      <main className="container">
+        <p className="error">{error}</p>
+        <button onClick={loadRandom} className="btn">Retry</button>
+      </main>
+    );
+  }
 
-  if (!question) return (
-    <main className="container">Loading…</main>
-  );
+  if (!question) return <main className="container">Loading…</main>;
+
+  const codeForImages = question.questionID || question.questionid || String(question.id);
 
   return (
     <main className="container">
       <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 12 }}>
         <img src="/logo.svg" alt="CertSherpa logo" width={200} style={{ height: 'auto' }} />
       </div>
+
       <h1>{question.question_text}</h1>
-      {/* Dynamic: render the image that matches the textual questionID */}
-      {(() => {
-        const codeForImages = (question.questionID || question.questionid || String(question.id));
-        const base = 'https://nbocdtiijnttzwfgdwbi.supabase.co/storage/v1/object/public/questions/';
-        return (
-          <div style={{ margin: '8px 0 12px' }}>
-            <img
-              src={`${base}${codeForImages}.png`}
-              alt={`${codeForImages} diagram`}
-              style={{ maxWidth: '100%', height: 'auto' }}
-              loading="lazy"
-            />
-          </div>
-        );
-      })()}
-      {(() => {
-        const codeForImages = (question.questionID || question.questionid || String(question.id));
-        return (
-          <QuestionImages
-            questionID={codeForImages}
-            imageUrl={question.imageUrl}
-            imageAlt={question.imageAlt}
-          />
-        );
-      })()}
+
+      {/* Render all matching images: ID.ext and ID_1.._10.ext (png/jpg/jpeg/webp/svg) */}
+      <QuestionImages
+        questionID={codeForImages}
+        imageUrl={question.imageUrl ?? null}
+        imageAlt={question.imageAlt ?? null}
+        // useSignedUrls   // uncomment if your bucket is private
+      />
+
       <div>
         {(['A','B','C','D'] as const).map(k => (
           <label key={k} className={`answer ${choice===k ? 'answer--selected' : ''}`}>
@@ -106,17 +108,17 @@ export default function Page() {
               value={k}
               checked={choice===k}
               onChange={() => setChoice(k)}
-              disabled={loading}
+              disabled={loading || answered}
             />
             <span>{question[`option_${k.toLowerCase() as 'a'|'b'|'c'|'d'}`]}</span>
           </label>
         ))}
       </div>
-      <button
-        onClick={submitAndNext}
-        disabled={!choice || loading}
-        className="btn-primary"
-      >{loading ? 'Saving…' : 'Next'}</button>
+
+      <button onClick={submitAndNext} disabled={loading || (!answered && !choice)} className="btn-primary">
+        {loading ? 'Saving…' : (answered ? 'Next question' : 'Next')}
+      </button>
+
       {lastResult && (
         <div className="result" style={{ color: lastResult.correct ? 'var(--success)' : 'var(--danger)' }}>
           {lastResult.text}
@@ -125,5 +127,3 @@ export default function Page() {
     </main>
   );
 }
-
-

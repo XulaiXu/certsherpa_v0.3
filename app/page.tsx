@@ -71,6 +71,19 @@ export default function Page() {
 
   useEffect(() => { loadRandom(); }, []);
 
+  // Resolve and log the public image URL strictly from the exact-cased QuestionID
+  const qid = (question as any)?.QuestionID?.trim() ?? null;
+  useEffect(() => {
+    if (!qid) {
+      if (question) {
+        console.warn('Question image skipped: missing QuestionID', { dbId: question.id });
+      }
+      return;
+    }
+    const { data: pub } = supabase.storage.from('questions').getPublicUrl(`${qid}.png`);
+    console.log('Question image resolved', { QuestionID: qid, url: pub?.publicUrl });
+  }, [qid]);
+
   if (error) {
     return (
       <main className="container">
@@ -82,8 +95,6 @@ export default function Page() {
 
   if (!question) return <main className="container">Loading…</main>;
 
-  const codeForImages = (question as any).QuestionID || question.questionID || question.questionid || String(question.id);
-
   return (
     <main className="container">
       <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 12 }}>
@@ -92,10 +103,10 @@ export default function Page() {
 
       <h1>{question.question_text}</h1>
 
-      {/* Render all matching images: ID.ext and ID_1.._10.ext (png/jpg/jpeg/webp/svg) */}
+      {/* Only use exact-cased QuestionID for image lookup */}
       <QuestionImages
-        questionID={codeForImages}
-        imageUrl={question.imageUrl ?? `${codeForImages}.png`}
+        questionID={qid ?? undefined}
+        imageUrl={qid ? `${qid}.png` : null}
         imageAlt={question.imageAlt ?? null}
         // useSignedUrls   // uncomment if your bucket is private
       />

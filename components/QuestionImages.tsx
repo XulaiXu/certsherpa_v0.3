@@ -4,12 +4,6 @@ import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { supabase } from '@/lib/supabase/client';
 
-const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL ?? 'https://nbocdtiijnttzwfgdwbi.supabase.co';
-const PUBLIC_STORAGE_BASE = `${SUPABASE_URL.replace(/\/+$/,'')}/storage/v1/object/public`;
-function toPublicUrl(bucket: string, path: string) {
-  return `${PUBLIC_STORAGE_BASE}/${bucket}/${path.replace(/^\/+/, '')}`;
-}
-
 type Props = {
   questionID?: string;
   imageUrl?: string | null;        // if present, we render this and skip lookup
@@ -37,7 +31,8 @@ export default function QuestionImages({
     let src = imageUrl;
     if (!absolute) {
       const clean = imageUrl.replace(/^\/+/, '');
-      src = toPublicUrl(bucket, clean);
+      const { data: pub } = supabase.storage.from(bucket).getPublicUrl(clean);
+      if (pub?.publicUrl) src = pub.publicUrl;
     }
     return (
       <img
@@ -74,7 +69,7 @@ export default function QuestionImages({
       await Promise.all(candidates.map(async (name) => {
         const url = useSignedUrls
           ? (await supabase.storage.from(bucket).createSignedUrl(name, 3600)).data?.signedUrl
-          : toPublicUrl(bucket, name);
+          : supabase.storage.from(bucket).getPublicUrl(name).data?.publicUrl;
         if (!url) return;
         await new Promise<void>((resolve) => {
           const img = new window.Image();

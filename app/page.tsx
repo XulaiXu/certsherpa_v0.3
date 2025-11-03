@@ -12,7 +12,6 @@ type Question = {
   solution?: string;
   imageUrl?: string | null;
   imageAlt?: string | null;
-  QuestionID?: string;  
   questionID?: string;   // quoted column keeps case
   questionid?: string;   // unquoted column lowercased by Postgres
 };
@@ -71,23 +70,6 @@ export default function Page() {
 
   useEffect(() => { loadRandom(); }, []);
 
-  // Resolve and log the public image URL using only the QuestionID column (tolerate casing variants)
-  const qid = (
-    (question as any)?.QuestionID ??
-    (question as any)?.questionID ??
-    (question as any)?.questionid
-  )?.trim() ?? null;
-  useEffect(() => {
-    if (!qid) {
-      if (question) {
-        console.warn('Question image skipped: missing QuestionID', { dbId: question.id });
-      }
-      return;
-    }
-    const { data: pub } = supabase.storage.from('questions').getPublicUrl(`${qid}.png`);
-    console.log('Question image resolved', { QuestionID: qid, url: pub?.publicUrl });
-  }, [qid]);
-
   if (error) {
     return (
       <main className="container">
@@ -99,6 +81,8 @@ export default function Page() {
 
   if (!question) return <main className="container">Loading…</main>;
 
+  const codeForImages = question.questionID || question.questionid || String(question.id);
+
   return (
     <main className="container">
       <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 12 }}>
@@ -107,10 +91,10 @@ export default function Page() {
 
       <h1>{question.question_text}</h1>
 
-      {/* Only use exact-cased QuestionID for image lookup */}
+      {/* Render all matching images: ID.ext and ID_1.._10.ext (png/jpg/jpeg/webp/svg) */}
       <QuestionImages
-        questionID={qid ?? undefined}
-        imageUrl={qid ? `${qid}.png` : null}
+        questionID={codeForImages}
+        imageUrl={question.imageUrl ?? null}
         imageAlt={question.imageAlt ?? null}
         // useSignedUrls   // uncomment if your bucket is private
       />

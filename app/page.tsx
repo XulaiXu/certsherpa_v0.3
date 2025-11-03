@@ -71,8 +71,12 @@ export default function Page() {
 
   useEffect(() => { loadRandom(); }, []);
 
-  // Resolve and log the public image URL strictly from the exact-cased QuestionID
-  const qid = (question as any)?.QuestionID?.trim() ?? null;
+  // Resolve and log the public image URL using only the QuestionID column (tolerate casing variants)
+  const qid = (
+    (question as any)?.QuestionID ??
+    (question as any)?.questionID ??
+    (question as any)?.questionid
+  )?.trim() ?? null;
   useEffect(() => {
     if (!qid) {
       if (question) {

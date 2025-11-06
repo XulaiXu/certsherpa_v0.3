@@ -1,0 +1,257 @@
+﻿question_ID,question_text,response_1,response_2,response_3,response_4,calculation,conceptual,question_img,question_table,answer_img,answer_table
+ODF25DT212-CD,"A 227-ft length of canal is to be lined with concrete for erosion control. With 12% allowance for waste and overexcavation, the volume (yd³) of concrete that must be delivered is most nearly:",327,234,280,292,TRUE,,TRUE,,,
+ODF25DT213-CD,"Based on the straight-line method of depreciation, the book value at the end of the 8th year for a track loader having an initial cost of $75,000, and a salvage value of $10,000 at the end of its expected life of 10 years is most nearly:",23000,10000,15000,48750,TRUE,,,,,
+ODF25DT214-CD,"The budgeted labor amount for an excavation task is $4,000. The hourly labor cost is $50 per worker, and the workday is 8 hours. Two workers are assigned to excavate the material. The time (days) available for the workers to complete this task is most nearly:",5,3,4,12.5,TRUE,,,,,
+ODF25DT215-CD,A CPM arrow diagram is shown below. Nine activities have been estimated with durations ranging from 5 to 35 days. The minimum time (days) required to finish the project is most nearly:,50,40,42,45,TRUE,,,TRUE,,
+ODF25DT216-SD,"A bridge is to be jacked up to replace its bearings. The design requires a hydraulic ram with a minimum capacity of 1,000 kN (kilonewtons). The hydraulic rams that are available are rated in tons (2,000 lb/ton). The minimum size (tons) ram to use is most nearly:",150,1110,250,100,TRUE,,,,,
+ODF25DT217-CD,A crane with a 100-ft boom is being used to set a small load on the roof of the building shown. The minimum standoff (Point A) from the corner of the building to the centerline of the boom is indicated. What is the maximum distance (ft) from the edge of the building that the load can be placed on the roof?,25,16,30,36,TRUE,,TRUE,,,
+ODF25DT218-SD,A wall form subjected to a wind load of 20 psf is prevented from overturning by diagonal braces spaced at 8 ft on center along the length of the wall form as shown in the figure. The connection at the base of the form at Point A is equivalent to a hinge. Ignore the weight of the form. The axial force (lb) resisted by the brace is most nearly:,2900,2050,2560,4525,TRUE,,TRUE,,,
+ODF25DT219-GD,Which one of the following statements regarding lateral earth pressures is correct?,The lateral strain required to fully mobilize the soil passive pressure is considerably greater than the lateral strain required to fully mobilize the soil active pressure.,The lateral strain required to fully mobilize the soil passive pressure is considerably smaller than the lateral strain required to fully mobilize the soil active pressure.,The lateral strain required to fully mobilize the soil passive pressure is slightly smaller than the lateral strain required to fully mobilize the soil active pressure.,The lateral strain required to fully mobilize the soil passive pressure is slightly greater than the lateral strain required to fully mobilize the soil active pressure.,,TRUE,,,,
+ODF25DT210-GD,"Site preparation and grading require the placement of 20 ft of new fill. An analysis of the resulting consolidation of the underlying soft, saturated, compressible deposits reveals a mean consolidation settlement of 22 in. affecting a 21.5-acre area. Prefabricated wick drains will be used to accelerate the settlement to meet the project schedule. Because of contamination from the former site use, the effluent from the wick drains will need to be collected and treated prior to disposal at an estimated cost of $0.25 per gallon. Assuming no loss of effluent during collection, the estimated treatment and disposal cost for the wick drain effluent at this site is most nearly:",3200000,430000,5200000,35000000,TRUE,,,,,
+ODF25DT221-GD,A soil profile is shown in the figure. The effective vertical stress (psf) at Point A is most nearly:,1820,1270,2140,2570,TRUE,,TRUE,,,
+ODF25DT222-GD,A bridge footing is to be constructed in sand. The groundwater level is at the ground surface. The ultimate bearing capacity would be based on what type of soil unit weight?,Buoyant unit weight,Saturated unit weight,Dry unit weight,Total unit weight,,TRUE,TRUE,,,
+ODF25DT223-GD,The figure shows two identical building footings with the same load but constructed in two different soil types. Which of the following statements is most correct?,The long-term settlement for Case I is less than Case II.,The long-term settlement for Case II is less than Case I.,The long-term settlements are the same for both cases.,Settlement is not a concern for either case.,,TRUE,TRUE,,,
+ODF25DT224-GD,"The minimum factor of safety against rotational failure for permanent slopes under long-term, non-seismic conditions influencing occupied structures is closest to:",1.5,1,1.1,3,,TRUE,,,,
+ODF25DT225-GD,"Referring to the figure, what load combination produces the maximum uplift on Footing A?",Dead + live + wind,Dead + live,Dead + wind,Dead,,TRUE,TRUE,,,
+ODF25DT226-SD,A simply supported truss is loaded as shown in the figure. The loads (kips) for Members b and c are most nearly:,"Member b: 0, Member c: 100","Member b: 0, Member c: 0","Member b: 100, Member c: 0","Member b: 100, Member c: 100",TRUE,,TRUE,,,TRUE
+ODF25DT227-SD,"Consider two beams with equal cross-sections, made of the same material, having the same support conditions, and each loaded with equal uniform load per length. One beam is twice as long as the other. The maximum bending stress in the longer beam is larger by a factor of:",4,1.3,2,3,TRUE,,,,,
+ODF25DT228-SD,The point load (kips) placed at the centerline of a 30-ft beam that produces the same maximum shear in the beam as a uniform load of 1 kip/ft is most nearly:,30,7.5,15,60,TRUE,,TRUE,,,
+ODF25DT229-SD,The beam sections shown are fabricated from 1/2-in. x 6-in. steel plates. Which of the following cross sections will provide the greatest flexural rigidity about the x-axis?,(D),(A),(B),(C),,TRUE,,,TRUE,
+ODF25DT220-GD,A concrete gravity retaining wall having a unit weight of 150 pcf is shown in the figure. Use the Rankine active earth pressure theory and neglect wall friction. The factor of safety against overturning about the toe at Point O is most nearly:,3.1,2.5,2.2,0.3,TRUE,,TRUE,,,
+ODF25DT231-WD,"A drainage basin produces a stormwater runoff volume of 25.0 acre-ft, which must be drained through a rectangular channel that is 4 ft wide and 2 ft deep and has a uniform slope of 0.2%. Assume a Manning roughness coefficient of 0.022 and a constant depth of flow of 1.5 ft. The time (hours) it will take to discharge the runoff is most nearly:",18.5,12.5,16.4,25,TRUE,,,,,
+ODF25DT232-WD,"Two identical 12-in. storm sewers flow full at a 2% slope into a junction box. A single larger pipe of the same material and slope flows out of the box. Assuming the following pipe sizes are commercially available, the minimum size of this downstream pipe (in.) designed to flow full is most nearly:",16,18,20,24,TRUE,,,,,
+ODF25DT233-WD,"The following table represents the rainfall recorded from all rain gages located in and around a drainage area. 
+
+[TABLE]
+
+Using the arithmetic mean method, the average precipitation (in.) for the drainage area is most nearly:",3.4,3.7,4.1,37,TRUE,,,TRUE,,
+ODF25DT234-WD,"The rational method must be used to determine the maximum runoff rate for a 90-acre downtown area. The time of concentration for the 50-year frequency storm is 1 hour. Intensity-duration-frequency curves and a table of runoff coefficients are provided. The maximum runoff rate (cfs), based on the maximum runoff coefficient for a 50-year storm, is most nearly: 
+
+[FIGURE]
+ [TABLE]",300,160,220,340,TRUE,,TRUE,TRUE,,
+ODF25DT235-WD,"A stormwater drainage ditch with a maximum capacity of 10 cfs discharges into a detention basin. The detention basin volume is 400,000 gal. During a storm event the average discharge into the detention basin was 1.5 cfs. The time (hours) to fill the empty basin would be most nearly:",9.9,1.5,11.1,74.1,TRUE,,,,,
+ODF25DT236-WD,"Assume fully turbulent flow in a 1,650-ft section of 3-ft-diameter pipe. The Darcy-Weisbach friction factor f is 0.0115. There is a 5-ft drop in the energy grade line over the section. The flow rate (cfs) is most nearly:",50,16,29,810,TRUE,,,,,
+ODF25DT237-WD,"Assuming that Bernoulli's equation applies (ignore head losses) to the pipe flow shown in the figure, which of the following statements is most correct?",Pressure head decreases from 1 to 2.,Pressure head increases from 1 to 2.,Pressure head remains unchanged from 1 to 2.,Bernoulli's equation does not include pressure head.,,TRUE,TRUE,,,
+ODF25DT238-TD,"The following information is for a proposed horizontal curve in a new subdivision: 
+PI station 12+40.00, 
+Degree of curve 10°, 
+Deflection angle 12°30'. 
+The station of the PT is most nearly:",13+02.00,12+79.80,12+80.10,13+64.75,TRUE,,,TRUE,,
+ODF25DT239-TD,"For the sag vertical curve shown, the tangent slope at Station 14+00 is most nearly:
+
+[FIGURE]",0.0123,0.0053,0.0212,0.0277,TRUE,,TRUE,,,
+ODF25DT241-GD,The most essential criteria for proper soil classification using the Unified Soil Classification or the AASHTO Soil Classification system are:,grain-size distribution and Atterberg limits,water content and soil density,Atterberg limits and specific gravity,grain-size distribution and water content,,TRUE,,,,
+ODF25DT242-GD,The Standard Penetration Test (SPT) is widely used as a simple and economic means of obtaining which of the following?,An indirect indication of the relative density of cohesionless soils,A measurement of soil compressibility expressed in terms of a compression index,A direct measurement of the undrained shear strength,A direct measurement of the angle of internal friction,,TRUE,,,,
+ODF25DT243-TD,"A department of transportation must remove and replace a 12-ft x 20-ft concrete slab on an interstate facility. To minimize disruption to traffic, the work must be completed during an 8-hour nighttime work shift. Nighttime temperatures average 50°F. If the minimum required compressive strength is 3,500 psi, the concrete mix would most likely consist of:","coarse aggregate, sand, Type III cement, water, chemical accelerator","coarse aggregate, sand, Type II cement, chemical accelerator","sand, Type III cement, water, chemical accelerator","coarse aggregate, sand, Type V cement, water, chemical accelerator",,TRUE,,,,
+ODF25DT244-SD,Fatigue in steel can be the result of:,a reduction in strength due to cyclical loads,deformation under impact loads,deflection due to overload,expansion due to corrosion,,TRUE,,,,
+ODF25DT230-TD,"An interstate highway has the following traffic count data for a day in each month as shown below. 
+
+[TABLE]
+
+The seasonal factor for the summer months of June through August is most nearly:",1.1,0.3,0.9,1,TRUE,,,TRUE,,
+ODF25DT245-SD,"Sample concrete cylinders that are 6 inches in diameter and 12 inches high are tested to determine the compressive strength of the concrete f'c. The test results are as follows:
+
+[TABLE]
+
+Based on the above results, the average 28-day compressive strength (psi) is most nearly:",2450,615,2250,2800,TRUE,,,TRUE,,
+ODF25DT246-GD,"During testing of a sample in the laboratory, the following soil data were collected:
+combined weight of compacted soil sample and the mold is 9.11 lb.
+Water content of soil sample is 11.5%
+The weight and volumn of mold are 4.41 lb and 0.03 ft^3, respectively.
+
+The dry unit weight of the soil sample (pcf) is most nearly:",140,160,127,125,TRUE,,,,,
+ODF25DT247-CD,Refer to the figure. The net excess excavated material (yd³) from Station 1+00 to Station 3+00 is most nearly:,390,160,262,463,TRUE,,TRUE,,,
+ODF25DT248-WD,"An existing pipe connects two maintenance holes (MH). A third MH is planned between the two. At the new MH, the elevation (ft) of the top of the pipe is most nearly:",627.6,623.1,628.1,628.6,TRUE,,TRUE,,,
+ODF25DT249-WD,Which of the following is not a stormwater erosion classification?,Rushing erosion,Sheet erosion,Rill erosion,Gully erosion,,TRUE,,,,
+ODF25DT240-GD,"Based on the soil classification system found in the federal OSHA regulation Subpart P, Excavations, the soil adjacent to an existing building has been classified as Type B. An undisturbed perimeter strip that is 5 ft wide is to be maintained along the face of the building. The excavation is to be 12 ft deep. To meet OSHA excavation requirements, the minimum horizontal distance X (ft) from the toe of the slope to the face of the structure is most nearly:",17,11,14,23,TRUE,,TRUE,,,
+ODF25DT251-GD,"Based on the criteria provided, the steepest backslope (H:V) preferred in the ditch shown is most nearly:",5:01,2:01,3:01,6:01,,TRUE,TRUE,,,
+ODF25DT612-SD,"The following data apply to the structure shown in the figure. 
+
+Ground snow load = 20 psf 
+Roof is fully exposed with wood shingles
+Open terrain 
+Risk Category I
+Unheated structure
+
+The design snow load (psf) for roof joists is most nearly:",16,10,12,20,TRUE,,TRUE,,,
+ODF25DT613-SD,"The figure shows a one-story building with CMU walls on three sides and a glass storefront. The uniform load shown in the figure is the wind reaction acting at the top of the wall, directly into the diaphragm. The resultant force (kips) on Wall B from the wind acting on the front wall is most nearly:",6,4,8,12,TRUE,,TRUE,,,
+ODF25DT614-SD,"A two-story 100-ft x 100-ft industrial facility in Seismic Design Category A has a second floor that is used for storage and a 200-psf reduced floor live load. If the facility has a flat roof that experiences a snow load of 50 psf and the total dead load of the building is 200,000 lb, the minimum lateral force E (lb) for the entire building is most nearly:",2000,7000,22000,27000,TRUE,,,,,
+ODF25DT615-SD,A moving load is applied to a beam as shown in the figure. The maximum service moment (k-tips) carried by the beam is most nearly:,150,75,115,300,TRUE,,TRUE,,,
+ODF25DT616-SD,"A building floor is supported by steel beams as shown in the figure. The floor beams are spaced 10ft o.c. at either side of the beam shown. 
+
+Assumptions:
+All loads act simultaneously
+Neglect beam self-weight
+The live loads are non-reducible 
+
+The total service load reaction (Kips) at the support at A is most nearly:
+
+[FIGURE]",28,3,14,35,TRUE,,TRUE,,,
+ODF25DT617-SD,"The beam shown in the figure is loaded with a uniform load of 1 kip/ft and a point load of 6 kips located 5 ft from the left end. The location of the maximum moment measured from the right end (ft) is most nearly:
+
+[FIGURE]",11.5,5,8.5,10,TRUE,,TRUE,,,
+ODF25DT618-SD,"A loaded beam is shown in the figure. Using the method of moment distribution, the unbalanced portion of the fixed-end moments (k-tips) at Joint B is most nearly:
+
+[FIGURE]",13,19,6,0,TRUE,,TRUE,,,
+ODF25DT619-SD,"The beam shown in the figure is simply supported, and the dead load is negligible. A steel plate is attached to the beam sufficiently to fully develop composite section. The tensile stress in the steel (ksi) is most nearly:
+
+[FIGURE]",23.5,2.6,14.4,18.6,TRUE,,TRUE,,,
+ODF25DT610-SD,"A double-tee supported byn an L-beam is loaded as shown in the figure.
+
+Design Code:
+ACI 318: Building Code Requirements for Structural Concrete, 2011
+
+The magnitude of the ultimate torsion (ft-kips) induced into the L-beam, by superimposed dead and live load applied on the double-tee, is most nearly:
+
+[FIGURE]",28.6,18.7,20.7,34.5,TRUE,,TRUE,,,
+ODF25DT621-SD,"A beam is loaded as shown: 
+
+[FIGURE]
+
+Which bending moment diagram most accurately represents the loaded beam?",answerImg1,answerImg2,answerImg3,answerImg4,,TRUE,TRUE,,TRUE,
+ODF25DT622-SD,"Referring to the figure, the maximum flexural stress (psi) in the member is most nearly:",1875,5625,3125,1565,TRUE,,TRUE,,,
+ODF25DT623-SD,"The figure shows a section with elements that are adequately connected to ensure composite action. Assuming Q = 85 in³, the maximum horizontal shear stress (psi) in the member is most nearly:",150,90,300,400,TRUE,,TRUE,,,
+ODF25DT624-SD,"The pipe member shown in the figure has a constant section and the following properties:
+
+Outside diameter 10 in
+Moment of Inertia. 90 in^4
+Area. 7 in^2 
+
+Neglecting the weight of the pipe, the maximum compressive stress (ksi) at the support is most nearly:",10.4,2.9,13.3,16.2,TRUE,,TRUE,TRUE,,
+ODF25DT625-SD,A cable carrying traffic signal loads is shown in the figure. The deflection at point B is 12 in. Neglect elongation of the cable. The tension force (lb) in the cable between C and D is most nearly:,4476,4685,1816,213,TRUE,,TRUE,,,
+ODF25DT626-SD,"A structure is shown in the figure. For a stress check of column A1, which of the following statements is true?",Buckling in the east-west direction will control the column capacity.,Buckling in the north-south direction will control the column capacity.,Buckling in either direction might control the column capacity.,Buckling will not control since both directions are stable.,,TRUE,TRUE,,,
+ODF25DT627-SD,"Normal-weight concrete with a maximum aggregate size of 1 1/2 in., f′c​ =4,000 psi, has moderate exposure to freezing and thawing. Neglecting tolerance, the recommended minimum air content is most nearly:",0.045,0.05,0.055,0.06,TRUE,,,,,
+ODF25DT628-SD,Which of the following characterizes the typical failure of an over-reinforced concrete beam that has a reinforcement ratio higher than the balanced ratio?,"The concrete crushes, and the beam fails suddenly without warning.","The steel yields, and large deflections and tensile cracks will be observed prior to failure.","The concrete crushes, and large deflections and tensile cracks will be observed prior to failure.","The steel yields, and the beam fails suddenly without warning.",,TRUE,,,,
+ODF25DT629-SD,"The figure shows a wall construction plan.
+
+Building Code:
+NDS: National Design Specification for Wood Construction ASD/LRFD, 2012 edition and National Design Specification Supplement, Design Values for Wood Construction, 2012 edition.
+
+Material:
+Douglas Fir-Larch #2
+
+Assumptions:
+The gypsum board provides stud weak axis bracing.
+
+C_D = 1.6
+C_M = 1.0
+C_T = 1.0
+C_F = 1.15
+C_i = 1.00
+C_p = 0.33 strong axis
+C_p = 1.0 weak axis
+
+Using allowable stress design, the maximum vertical load (lb) per stud is most nearly:",4300,2700,3300,3700,TRUE,,TRUE,TRUE,,
+ODF25DT620-SD,"The following information applies to the masonry beam section shown:
+
+f'm = 1,500 psi
+f_y = 60,000 psi
+
+Design Code:
+ACI-530/530.1: Building Code Requirements and Specifications for Masonry Structures (and related commentaries), 2011.
+
+Use allowable stress design. Assume shear load is resisted by shear reinforcement only. The maximum allowable shear force (kips) for the beam is most nearly:",8,12,14,18,TRUE,,TRUE,TRUE,,
+ODF25DT631-SD,"A concrete slab of uniform thickness is continuous for six spans and is supported by 12-in.-wide concrete beams at 10 ft o.c. The following loads are applied to the slab:
+
+DL 100 psf (includes self-weight)
+LL 50 psf
+
+Using ACI 318-11's alternate to frame analysis, the maximum factored negative moment in the slab (ft-kips/ft) is most nearly:",1.35,1.47,1.67,1.8,TRUE,,TRUE,,,
+ODF25DT632-SD,"The W10 x 22 steel beam (F_y = 50 ksi) shown in the figure is only braced at the center of the span.
+Work either the ASD or the LRFD version of the question.
+
+ASD
+The allowable moment capacity (ft-kips) of the beam is most nearly:
+
+LRFD
+The moment capacity ϕMn (ft-kips) of the beam is most nearly:",questionTable2,questionTable1,questionTable3,questionTable4,TRUE,,TRUE,,,TRUE
+ODF25DT633-SD,"A loaded prestressed beam is shown in the figure:
+
+[DIAGRAM]
+
+The most likely prestressing strand pattern for the loaded prestressed beam shown would be:",questionImg1,questionImg2,questionImg3,questionImg4,,TRUE,TRUE,,TRUE,
+ODF25DT634-SD,"The following information applies to the simply-supported steel beam shown in the figure:
+
+E. 29,000 ksi 
+Maximum beam depth 14 in.
+Uniform load includes beam self-weight
+
+Considering only deflection criteria, the lightest W section for which the maximum deflection is less than l/240 is most nearly:",W14 x 34,W14 x 22,W14 x 30,W14 x 90,TRUE,,TRUE,,,
+ODF25DT635-SD,"For the section shown, the unit shear force (kips/in.) in the welds connecting the top flange to the web (total unit shear in the two weld lines combined) is most nearly:",1.5,3,5.5,10,TRUE,,TRUE,,,
+ODF25DT636-SD,"Referring to the loaded truss shown in the figure, the force (kips) in Member AB is most nearly:",-167,-100,-125,167,TRUE,,TRUE,,,
+ODF25DT637-SD,"The figure shows a timber column 
+
+Building Code: 
+NDS: National Design Specification for Wood Construction ASD/LRFD, 2012 edition and National Design Specification Supplement, Design Values for Wood Construction, 2012 edition 
+
+Assuming dry service, normal temperature conditions, and Ci = 1.00, the critical buckling design value Fe (psi) for the timber column is most nearly:",350,150,475,500,TRUE,,TRUE,,,
+ODF25DT638-SD,The tensile force (lb) in the top lag screw connection shown in the figure is most nearly:,619,582,800,2400,TRUE,,TRUE,,,
+ODF25DT639-SD,"A connection is shown in the figure.
+
+Design Code:
+AISC: Steel Construction Manual, 14th edition.
+
+Material:
+A36 steel
+
+Assumptions:
+The bolt is sufficient.
+The concrete is sufficient.
+The load P is equally distributed along the entire 6-in.-long angle.
+
+The maximum load P (ASD) or ϕPn (LRFD) in kips that can be carried by the angle is most nearly:",answerTable1,answerTable2,answerTable3,answerTable4,TRUE,,TRUE,,,TRUE
+ODF25DT630-SD,"The following information applies to the roof diaphragm shown in the figure:
+
+Story Drifts:
+Wall A 0.30 in.
+Wall B 0.50 in.
+
+Diaphragm: wood constructed in accordance with applicable codes.
+Diaphragm in-plane deflection: V = 1.00 in. (of the diaphragm itself)
+Diaphragm deflections can be tolerated.
+
+The diaphragm can be characterized as:",flexible,"flexible, torsionally irregular","rigid, torsionally irregular","rigid, torsionally regular
+
+
+
+
+",TRUE,,TRUE,TRUE,,TRUE
+ODF25DT641-SD,The concrete footing shown is subjected to loads from a braced frame. Assume the footing is rigid compared to the soil. The maximum bearing pressure (ksf) under the footing is most nearly:,2.7,0.5,1,2,TRUE,,TRUE,,,
+ODF25DT642-SD,"The figure shows a cast-in-place reinforced concrete spread footing for an interior column that is concentrically loaded. Pinching shear controls the footing thickness in the design. Neglecting the shear strength of reinforcing, the design punching shear capacity of the footing (kips) per ACI 318-11, excluding Appendix C, is most nearly:",420,870,680,560,TRUE,,TRUE,,,
+ODF25DT643-SD,"A concrete caisson is subjected to two separate loading conditions: a net uplift of 100 kips, or a net gravity load of 75 kips. The loads are not applied simultaneously. The allowable soil skin friction is 200 psf, and the allowable soil bearing pressure is 4,000 psf. Neglecting the weight of the caisson, the required caisson diameter (ft) is most nearly:",8,7,6,5,TRUE,,TRUE,,,
+ODF25DT644-SD,"Assuming a bearing-type connection, the load capacity (kips) for a 1-in.-diameter A307 through bolt in double shear is most nearly (ASD and LRFD):",answerTable2,answerTable1,answerTable3,answerTable4,TRUE,,,,,TRUE
+ODF25DT645-SD,"The following information applies to the structure shown in the figure:
+
+Neglect beam weight
+Beam is infinitely stiff
+Footing size is 24 in x 24 in at each footing
+Soil vertical modulus of subgrade, K = 100 lb/in3
+
+The vertical settlement (in.) of the footing at B is most nearly:",2.2,1.6,1.1,0.7,TRUE,,TRUE,,,
+ODF25DT646-SD,"The cross section for a 50 ft-span, rectangular, prestressed beam is shown in the figure: The beam has no mild reinforcing steel. 
+
+Design Guide:
+PCI: PCI Design Handbook: Precast and Prestressed Concrete, 7th edition, 2010
+
+Design data for prestressing strands:
+Low relaxation -- 1/2-in. diameter
+fpu = 270 ksi
+As = 0.153 in^2 per strand
+Stress at release = 175 ksi per strand (after initial losses) 
+
+If the top fiber stress at the midspan of the beam due to the beam self-weight is 0.65 ksi, the total top fiber stress (ksi) at release at midspan is most nearly:",0.01,0.5,-0.99,-2.29,TRUE,,TRUE,TRUE,,
+ODF25DT647-SD,"A backfill material is described as sand-silt clay mix with plastic fines. The Unified Soil Classification is SM-SC. Per ASCE 7, the estimated design lateral soil load (psf/foot of depth) for relatively non-rigid walls is most nearly:",85,35,45,100,,TRUE,,,,
+ODF25DT648-SD,"A building is to be constructed on a site defined as Site Class E with a 0.2-sec mapped spectral response acceleration of 100% g. Per IBC 2012, the design spectral response acceleration at short periods is most nearly:
+",0.6,0.7,0.9,1.6,TRUE,,,,,
+ODF25DT649-SD,"The figure shows a cross section of a deck slab of a steel girder bridge.
+
+Design Code:
+AASHTO LRFD Bridge Design Specifications, 6th edition, 2012.
+
+The effective span length L_eff to be used for the empirical design of the deck slab is most nearly:","7' 3""","6' 9""","7' 0""","8' 6""",TRUE,,TRUE,,,
+ODF25DT640-SD,"The formwork and shoring are in place at both levels of the two-story building shown. Shores are spaced at 6 ft on center. Assume all Level 2 loads are carried by the formwork and shoring during the roof pour. During placement of concrete at the roof, the service load (lb) in a shore at Level 1 is most nearly:",11650,4930,9860,15420,TRUE,,TRUE,,,
+ODF25DT651-SD,"The first five 28-day average standard-cured concrete strength tests are shown below. 
+
+[TABLE]
+
+The required f'c = 4,000 psi. Which of the following statements is true?",The concrete is unsatisfactory because the average of the last three consecutive tests is less than the required f'c.,The concrete is unsatisfactory because Test 3 did not meet the required f'c.,The concrete is satisfactory because the average of the first three tests is greater than or equal to the required f'c.,The concrete is satisfactory because Test 3 is within 500 psi of the required f'c.,,TRUE,,TRUE,,
